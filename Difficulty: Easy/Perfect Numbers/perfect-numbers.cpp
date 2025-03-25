@@ -11,10 +11,10 @@ class Solution {
         // code here
         int sum=1;
         //cout<<ceil((double)6/4);
-        for(int i=2;i<sqrt(n);i++){
+        for(int i=2;i<=sqrt(n);i++){
             if(n%i==0){
                 sum+=i;
-                //cout<<sum<<"in oop"<<endl;
+                //cout<<sum<<"in loop"<<endl;
                 int x=n/i;
                 
                 if(x!=i){
