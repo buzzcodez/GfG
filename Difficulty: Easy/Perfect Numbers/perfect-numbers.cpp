@@ -10,16 +10,24 @@ class Solution {
     bool isPerfectNumber(int n) {
         // code here
         int sum=1;
-        int val=abs(sqrt(n));
-        for(int i=2 ; i<=val ;i++){
+        //cout<<ceil((double)6/4);
+        for(int i=2;i<sqrt(n);i++){
             if(n%i==0){
                 sum+=i;
-                if(i!=n/i){
-                    sum+=n/i;
+                //cout<<sum<<"in oop"<<endl;
+                int x=n/i;
+                
+                if(x!=i){
+                    sum+=x;
                 }
             }
+            //cout<<sum<<endl;
         }
-        return sum==n;
+        
+        if(sum==n){
+            return true;
+        }
+        return false;
     }
 };
 
