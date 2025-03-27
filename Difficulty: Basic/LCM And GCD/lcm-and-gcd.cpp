@@ -11,17 +11,15 @@ class Solution {
         // code here
         int oria=a , orib=b;
         while(a>0 and b>0){
-            if(a>b){
-                a=a%b;
-            }
-            else{
-                b=b%a;
-            }
+            if(a>b)
+             a=a%b;
+            else
+             b=b%a;
         }
         int gcd=max(a,b);
-        int lcm=(oria/gcd)*orib;
-        return{lcm,gcd};
         
+        int lcm = (oria/gcd)*orib;
+        return{lcm,gcd};
     }
 };
 
