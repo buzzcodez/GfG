@@ -4,28 +4,31 @@ using namespace std;
 
 
 // } Driver Code Ends
+
 /*You are required to complete this function*/
 
 class Solution {
   public:
     int maxLen(vector<int>& arr) {
         // code here
-        int max_length=0;
-        unordered_map<int,int>sumIndexMap;
-        int sum=0 ;
-        for(int i=0 ; i<arr.size();i++){
+        int sum=0 , len=0;
+        unordered_map<int,int>mpp;
+        for(int i=0;i<arr.size();i++){
             sum+=arr[i];
-            if(sum==0)      max_length=i+1;
-            else if(sumIndexMap.find(sum) != sumIndexMap.end()){
-                max_length=max(max_length,i-sumIndexMap[sum]);
+            if(sum==0){
+                len=i+1;
+            }
+            if(mpp.find(sum)!=mpp.end()){
+                len=max(len,i-mpp[sum]);
             }
             else{
-                sumIndexMap[sum]=i;
+                mpp[sum]=i;
             }
         }
-        return max_length;
+        return len;
     }
 };
+
 
 
 //{ Driver Code Starts.
