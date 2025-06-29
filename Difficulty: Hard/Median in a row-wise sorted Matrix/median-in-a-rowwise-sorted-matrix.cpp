@@ -1,52 +1,29 @@
-//{ Driver Code Starts
-// Initial template for C++
-
-#include <bits/stdc++.h>
-using namespace std;
-
-
-// } Driver Code Ends
 // User function template for C++
 
 class Solution {
   public:
+    int helper(vector<int>&row , int target){
+        //  Counts how many numbers are <= target in a sorted row
+        return upper_bound(row.begin(),row.end(),target)-row.begin();
+    }
     int median(vector<vector<int>> &mat) {
-        // to get 20 lpa+ before prafull
-        vector<int> list;
+        // code here
         int n=mat.size();
         int m=mat[0].size();
-        for(int i=0 ; i<n ;i++){
-            for(int j=0 ; j<m ;j++){
-                list.push_back(mat[i][j]);
-            }
+        
+        int l=0;
+        int h=2000;
+        
+        while(l<=h){
+            int mid=(l+h)/2;
+            int cnt=0;
             
+            for(int i=0;i<n;i++){
+                cnt+=helper(mat[i],mid);
+            }
+            if(cnt<=(n*m)/2) l=mid+1;
+            else h=mid-1;
         }
-        sort(list.begin(),list.end());
-        return list[(m*n) / 2];
+        return l;
     }
 };
-
-
-//{ Driver Code Starts.
-
-int main() {
-    int t;
-    cin >> t;
-    while (t--) {
-        int r, c;
-        cin >> r >> c;
-        vector<vector<int>> matrix(r, vector<int>(c));
-        for (int i = 0; i < r; ++i)
-            for (int j = 0; j < c; ++j)
-                cin >> matrix[i][j];
-        Solution obj;
-        int ans = -1;
-        ans = obj.median(matrix);
-        cout << ans << "\n";
-
-        cout << "~"
-             << "\n";
-    }
-    return 0;
-}
-// } Driver Code Ends
